@@ -9,28 +9,31 @@
     <!-- Top Row -->
     <div class="top-row">
       <div id="visualizer" class="visualizer">
-        Time based 
+        <img id="timeImage" src="" alt="Time Based Visual" />
       </div>
+      
       <div class="sliders">
-        <label>
-          Time of Day
+        <div class="slider-wrapper">
+          <label for="timeSlider">Time of Day</label>
           <input type="range" id="timeSlider" min="0" max="5" />
-        </label>
-        <label>
-          Brightness
+        </div>
+      
+        <div class="slider-wrapper">
+          <label for="brightnessSlider">Brightness</label>
           <input type="range" id="brightnessSlider" min="50" max="150" />
-        </label>
-        <label>
-          Auto Brightness
+        </div>
+      
+        <div class="slider-wrapper">
+          <label for="autoBrightnessToggle">Auto Brightness</label>
           <input type="checkbox" id="autoBrightnessToggle" />
-        </label>
-      </div>"
+        </div>
+      </div>
     </div>
 
     <!-- Bottom Row -->
     <div class="bottom-row">
       <div class="auto-picture">
-        Automated Picture
+        <img id="autoImage" src="" alt="Automated Brightness" />
       </div>
       <div id="themeDisplay" class="theme-box">
         Colour Theme

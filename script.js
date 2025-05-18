@@ -1,40 +1,79 @@
 const timeSlider = document.getElementById("timeSlider");
 const brightnessSlider = document.getElementById("brightnessSlider");
-const autoBrightnessToggle = document.getElementById("autoBrightnessToggle");
-const visualizer = document.getElementById("visualizer");
+const autoToggle = document.getElementById("autoBrightnessToggle");
 
-const times = ["morning_sunrise","morning", "afternoon", "evening","evening_sunset", "night"];
+const timeImage = document.getElementById("timeImage");
+const autoImage = document.getElementById("autoImage");
+const themeDisplay = document.getElementById("themeDisplay");
 
-const autoBrightnessValues = [80, 100, 110, 80, 70, 40];
+const imagePaths = [
+  "images/dawn.jpeg",        
+  "images/morning.jpeg",    
+  "images/noon.jpeg",    
+  "images/evening.jpeg",     
+  "images/night.jpeg",       
+  "images/late_night.jpeg"  
+];
 
-function updateTheme() {
-  visualizer.className = "visualizer";
+const autoBrightnessValues = [100, 90, 100, 90, 80, 70];
 
-  const timeIndex = parseInt(timeSlider.value);
-  const time = times[timeIndex];
-  visualizer.classList.add(time);
-
-  if (autoBrightnessToggle.checked) {
-    const autoBrightness = autoBrightnessValues[timeIndex];
-    brightnessSlider.value = autoBrightness;
-  }
-
-  const brightness = brightnessSlider.value;
-  visualizer.style.filter = `brightness(${brightness}%)`;
+function updateImage() {
+  const index = parseInt(timeSlider.value);
+  const imageSrc = imagePaths[index];
+  timeImage.src = imageSrc;
+  autoImage.src = imageSrc; 
 }
 
-timeSlider.addEventListener("input", updateTheme);
-brightnessSlider.addEventListener("input", () => {
-  if (!autoBrightnessToggle.checked) updateTheme();
+function updateBrightness() {
+  const brightness = brightnessSlider.value;
+  timeImage.style.filter = `brightness(${brightness}%)`;
+  autoImage.style.filter = `brightness(${autoBrightnessValues}%)`;
+  themeDisplay.style.filter = `brightness(${brightness}%)`;
+
+}
+
+function handleAutoBrightness() {
+  const index = parseInt(timeSlider.value);
+  const autoValue = autoBrightnessValues[index];
+
+  if (autoToggle.checked) {
+    brightnessSlider.disabled = true;
+    timeImage.style.filter = `brightness(${autoValue}%)`;
+    autoImage.style.filter = `brightness(${autoValue}%)`;
+  } else {
+    brightnessSlider.disabled = false;
+    updateBrightness();
+  }
+}
+
+function updateColorTheme() {
+  const index = parseInt(timeSlider.value);
+  const colors = [
+    "#FFCC99", // Dawn
+    "#FFCC66", // Morning
+    "#FFFFCC", // Noon
+    "#FF9966", // Evening
+    "#666699", // Night
+    "#333333"  // Late Night
+  ];
+  const currentColor = colors[index];
+  themeDisplay.style.backgroundColor = currentColor;
+  themeDisplay.style.color = "#ffffff"; 
+}                                                       
+
+timeSlider.addEventListener("input", () => {
+  updateImage();
+  handleAutoBrightness();
+  updateColorTheme();
 });
 
-autoBrightnessToggle.addEventListener("change", () => {
-    brightnessSlider.disabled = autoBrightnessToggle.checked;
-    updateTheme();
-  });
+brightnessSlider.addEventListener("input", updateBrightness);
+autoToggle.addEventListener("change", handleAutoBrightness);
+autoToggle.addEventListener("change", () => {
+  handleAutoBrightness();
+  updateColorTheme(); 
+});
 
-updateTheme();
-
-
-  
-
+updateImage();
+handleAutoBrightness();  
+updateColorTheme(); 
