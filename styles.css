@@ -79,7 +79,7 @@ body, html {
   }
   
   .slider-wrapper {
-    border: 2px solid #24bfe5;
+    border: 2px solid #c7e63b;
     padding: 10px;
     width: 30vw;
     margin-bottom: 10px;
@@ -101,8 +101,8 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #c7cfff;
-  border: 2px solid #60c5f1;
+  background-color: #e7ab80ca;
+  border: 2px solid #282a01;
   border-radius: 20px;
   padding: 5px 10px;
   margin: 10px auto;
@@ -122,5 +122,29 @@ body, html {
 .checkbox-wrapper {
   justify-content: flex-start;
   gap: 10px;
+}
+
+
+body.light-mode {
+  background-color: #f0f0f0;
+  color: #4c73c1;
+}
+
+body.dark-mode {
+  background-color: #282727;
+  color: #865454e1;
+  height: 100vh;
+  width: 100vw;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.theme-toggle input[type="checkbox"] {
+  accent-color: #333;
 }
 

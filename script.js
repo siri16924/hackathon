@@ -2,6 +2,8 @@ const timeSlider = document.getElementById("timeSlider");
 const brightnessSlider = document.getElementById("brightnessSlider");
 const autoToggle = document.getElementById("autoBrightnessToggle");
 
+const themeSwitch = document.getElementById("themeSwitch");
+
 const timeImage = document.getElementById("timeImage");
 const autoImage = document.getElementById("autoImage");
 const themeDisplay = document.getElementById("themeDisplay");
@@ -59,7 +61,17 @@ function updateColorTheme() {
   const currentColor = colors[index];
   themeDisplay.style.backgroundColor = currentColor;
   themeDisplay.style.color = "#ffffff"; 
-}                                                       
+}           
+
+themeSwitch.addEventListener("change", () => {
+  if (themeSwitch.checked) {
+    document.body.classList.remove("light-mode");
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
+    document.body.classList.add("light-mode");
+  }
+});
 
 timeSlider.addEventListener("input", () => {
   updateImage();
@@ -74,6 +86,8 @@ autoToggle.addEventListener("change", () => {
   updateColorTheme(); 
 });
 
+
+document.body.classList.add("dark-mode");
 updateImage();
 handleAutoBrightness();  
 updateColorTheme(); 
