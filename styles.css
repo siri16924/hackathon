@@ -1,24 +1,27 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background-image: url('');
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
-    border-radius: 20px;
-  }
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  background-color: #f0f0f0; 
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; 
+}
   
   .top-row {
     display: flex;
-    gap: 22px;
+    gap: 20px;
   }
   .bottom-row {
     display: flex;
-    gap: 22px;
+    gap: 20px;
   }
 
   .visualizer {
@@ -44,6 +47,7 @@ body {
   .theme-box {
     flex: 1;
     font-style: oblique;
+    width: 300px;
     height: 200px;
     border: 2px solid #0d0000;
     display: flex;
