@@ -87,7 +87,7 @@ autoToggle.addEventListener("change", () => {
 });
 
 
-document.body.classList.add("dark-mode");
+document.body.classList.add("light-mode");
 updateImage();
 handleAutoBrightness();  
 updateColorTheme(); 
